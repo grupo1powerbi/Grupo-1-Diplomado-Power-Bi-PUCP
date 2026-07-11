@@ -120,9 +120,9 @@ Facultad, Calendario, Escala de Pago, entre otras).
 
 ## 💼 Caso de Negocio
 
-![Business Case - Objetivo y Estrategia](imagenes/business-case-1.png)
+![Business Case - Objetivo y Estrategia](business-case-1.png)
 
-![Business Case - Costo Beneficio](imagenes/business-case-2.png)
+![Business Case - Costo Beneficio](business-case-2.png)
 
 
 
