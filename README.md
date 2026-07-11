@@ -132,7 +132,9 @@ Facultad, Calendario, Escala de Pago, entre otras).
 
 ![Indicadores - Fórmula y Semáforos](indicador-3.png)
 
+## 📊 Dashboard
 
+![Dashboard - Indicador Semestral de Deserción](dashboard-1.png)
 
 
 
