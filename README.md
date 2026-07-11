@@ -124,6 +124,14 @@ Facultad, Calendario, Escala de Pago, entre otras).
 
 ![Business Case - Costo Beneficio](business-case-2.png)
 
+## 📐 Indicadores
+
+![Indicadores - Definición](indicador-1.png)
+
+![Indicadores - Contexto de Negocio](indicador-2.png)
+
+![Indicadores - Fórmula y Semáforos](indicador-3.png)
+
 
 
 
