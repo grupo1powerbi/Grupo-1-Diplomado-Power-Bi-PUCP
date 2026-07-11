@@ -88,8 +88,37 @@ el siguiente período
 
 ## 📸 Evidencias del Proyecto
 
-### Modelo de Datos
-![Modelo de datos](imagenes/modelo-datos.png)
+### 🗄️ Modelo Relacional — SQL Server
+
+| Tablas | Registros | Llaves primarias | Relaciones |
+|---|---|---|---|
+| **14** | **242K+** | **14 PK** | **16 FK** |
+
+**Tablas transaccionales**
+- 🔵 **ALUMNO** — 30,000 filas
+- 🔵 **MATRICULA** — 130,500 filas
+- 🔵 **CURSOS_X_MATRICULA** — 75,063 filas
+- 🔵 **DESERCION** — 6,682 filas
+
+**Tablas maestras**
+- 🔴 **FACULTAD** — 10 filas
+- 🔴 **SEMESTRE_ACADEMICO** — 14 filas
+- 🔴 **CAUSA_DESERCION** — 7 filas
+- 🔴 **MATRICULA_ESTADO** — 5 filas
+
+### 🗂️ Modelo de Datos
+
+El modelo se construyó bajo un esquema de estrella, conectando las tablas de 
+hechos (Matrícula, Deserción) con sus dimensiones correspondientes (Alumno, 
+Facultad, Calendario, Escala de Pago, entre otras).
+
+![Modelo de datos - vista 1](modelo-datos.png.png)
+
+![Modelo de datos - vista 2](relaciones-1.png.png)
+
+![Modelo de datos - vista 3](relaciones-2.png.png)
+
+
 
 
 
