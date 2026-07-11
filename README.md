@@ -136,6 +136,10 @@ Facultad, Calendario, Escala de Pago, entre otras).
 
 ![Dashboard - Indicador Semestral de Deserción](dashboard-1.png)
 
+## 📄 Reporte
 
+![Reporte - Evolución de la Tasa de Deserción](reporte-1.png)
+
+![Reporte - What / So What / Now What](reporte-2.png)
 
 
