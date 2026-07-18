@@ -218,3 +218,39 @@ GROUP BY u.distrito
 HAVING COUNT(DISTINCT m.matricula_id) >= 30
 ORDER BY tasa_desercion DESC;
 ```
+### Pregunta 3 - Tasa de Deserción por Año de Ingreso
+
+**¿Qué año de ingreso registra el mayor indicador semestral de tasa de 
+deserción de alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 3 - Gráfico](pregunta3-grafico.png)
+
+**Detalle**
+![Pregunta 3 - Detalle](pregunta3-detalle.png)
+
+**Análisis**
+
+En el semestre 2025-II, los alumnos que ingresaron el año 2018 presentaron el 
+mayor Indicador Semestral de Tasa de Deserción, con 6.09%. Este grupo 
+corresponde a estudiantes que actualmente se retrasaron más de lo planeado por 
+cambios de carrera y al final dejaron la universidad.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Tasa de Deserción por Año de Ingreso - Semestre 2025-II (semestre_id = 14)
+-- Alumnos de pregrado, escalas de pago G3 y G4 - PUCP
+
+SELECT 
+    al.año_ingreso,
+    COUNT(DISTINCT d.matricula_id) AS desertores,
+    COUNT(DISTINCT m.matricula_id) AS matriculados,
+    CAST(COUNT(DISTINCT d.matricula_id) AS FLOAT) / COUNT(DISTINCT m.matricula_id) AS tasa_desercion
+FROM G1.MATRICULA m
+INNER JOIN G1.ALUMNO al 
+    ON m.alumno_id = al.alumno_id
+LEFT JOIN G1.DESERCION d 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY al.año_ingreso
+ORDER BY tasa_desercion DESC;
+```
