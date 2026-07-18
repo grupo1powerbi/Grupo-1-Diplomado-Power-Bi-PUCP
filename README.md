@@ -297,3 +297,40 @@ WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY f.nombre
 ORDER BY tasa_desercion DESC;
 ```
+
+### Pregunta 5 - Causa de Deserción con Mayor Tasa
+
+**¿Cuál es la causa de deserción con mayor indicador semestral de tasa de 
+deserción de alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 5 - Gráfico](pregunta5-grafico.png)
+
+**Detalle**
+![Pregunta 5 - Detalle](pregunta5-detalle.png)
+
+**Análisis**
+
+La causa Económica concentra el 37% de las deserciones en 2025-II. En segundo 
+lugar se ubica Personal/Familiar con 24.33%, y en tercer lugar Académica con 
+20.17%. Este patrón confirma la vulnerabilidad de estudiantes G3-G4 frente a 
+fluctuaciones económicas familiares.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Causa de Deserción con mayor tasa - Semestre 2025-II (semestre_id = 14)
+-- Porcentaje calculado sobre el total de desertores del semestre
+
+SELECT 
+    cd.descripcion AS causa_desercion,
+    COUNT(d.desercion_id) AS cantidad_desertores,
+    CAST(COUNT(d.desercion_id) AS FLOAT) / 
+        SUM(COUNT(d.desercion_id)) OVER () AS porcentaje
+FROM G1.DESERCION d
+INNER JOIN G1.MATRICULA m 
+    ON d.matricula_id = m.matricula_id
+INNER JOIN G1.CAUSA_DESERCION cd 
+    ON d.causa_desercion_id = cd.causa_desercion_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY cd.descripcion
+ORDER BY porcentaje DESC;
+```
