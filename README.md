@@ -178,4 +178,43 @@ LEFT JOIN G1.DESERCION d
 WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY al.genero;
 ```
+### Pregunta 2 - Tasa de Deserción por Distrito
 
+**¿Qué distrito presenta el mayor indicador semestral de tasa de deserción de 
+alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 2 - Gráfico](pregunta2-grafico.png)
+
+**Detalle**
+![Pregunta 2 - Detalle](pregunta2-detalle.png)
+
+**Análisis**
+
+El distrito de Villa María del Triunfo presenta el mayor indicador de deserción 
+entre los alumnos de pregrado en el semestre 2025-II, con una tasa de 10.00%. 
+Le siguen Oyón (8.89%) y Huacho (7.93%), evidenciando que las tasas más altas 
+se concentran en distritos fuera de Lima Metropolitana o en zonas periféricas 
+de la capital.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Top 10 distritos con mayor tasa de deserción - Semestre 2025-II (semestre_id = 14)
+-- Solo distritos con al menos 30 alumnos matriculados en el semestre
+
+SELECT TOP 10
+    u.distrito,
+    COUNT(DISTINCT d.matricula_id) AS desertores,
+    COUNT(DISTINCT m.matricula_id) AS matriculados,
+    CAST(COUNT(DISTINCT d.matricula_id) AS FLOAT) / COUNT(DISTINCT m.matricula_id) AS tasa_desercion
+FROM G1.MATRICULA m
+INNER JOIN G1.ALUMNO al 
+    ON m.alumno_id = al.alumno_id
+INNER JOIN G1.UBIGEO u 
+    ON al.ubigeo_id = u.ubigeo_id
+LEFT JOIN G1.DESERCION d 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY u.distrito
+HAVING COUNT(DISTINCT m.matricula_id) >= 30
+ORDER BY tasa_desercion DESC;
+```
