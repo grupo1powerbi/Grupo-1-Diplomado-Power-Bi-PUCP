@@ -142,6 +142,7 @@ Facultad, Calendario, Escala de Pago, entre otras).
 
 ![Reporte - What / So What / Now What](reporte-2.png)
 
+
 ### Pregunta 1 - Tasa de Deserción por Género
 
 **¿Qué género presenta el mayor indicador semestral de tasa de deserción de 
@@ -178,6 +179,7 @@ LEFT JOIN G1.DESERCION d
 WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY al.genero;
 ```
+
 ### Pregunta 2 - Tasa de Deserción por Distrito
 
 **¿Qué distrito presenta el mayor indicador semestral de tasa de deserción de 
@@ -218,6 +220,7 @@ GROUP BY u.distrito
 HAVING COUNT(DISTINCT m.matricula_id) >= 30
 ORDER BY tasa_desercion DESC;
 ```
+
 ### Pregunta 3 - Tasa de Deserción por Año de Ingreso
 
 **¿Qué año de ingreso registra el mayor indicador semestral de tasa de 
@@ -252,5 +255,45 @@ LEFT JOIN G1.DESERCION d
     ON d.matricula_id = m.matricula_id
 WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY al.año_ingreso
+ORDER BY tasa_desercion DESC;
+```
+
+### Pregunta 4 - Tasa de Deserción por Facultad
+
+**¿Cuál es la facultad con mayor indicador semestral de tasa de deserción de 
+alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 4 - Gráfico](pregunta4-grafico.png)
+
+**Detalle**
+![Pregunta 4 - Detalle](pregunta4-detalle.png)
+
+**Análisis**
+
+La facultad de Ciencias e Ingeniería presenta el mayor indicador de deserción 
+en el semestre 2025-II, con una tasa de 7.75%. Tiene una amplia diferencia 
+respecto a Economía con 4.92%, lo que sugiere que las carreras que emplean más 
+matemática tuvieron una mayor tendencia a abandonar sus estudios durante este 
+período.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Tasa de Deserción por Facultad - Semestre 2025-II (semestre_id = 14)
+-- Alumnos de pregrado, escalas de pago G3 y G4 - PUCP
+
+SELECT 
+    f.nombre AS facultad,
+    COUNT(DISTINCT d.matricula_id) AS desertores,
+    COUNT(DISTINCT m.matricula_id) AS matriculados,
+    CAST(COUNT(DISTINCT d.matricula_id) AS FLOAT) / COUNT(DISTINCT m.matricula_id) AS tasa_desercion
+FROM G1.MATRICULA m
+INNER JOIN G1.ALUMNO al 
+    ON m.alumno_id = al.alumno_id
+INNER JOIN G1.FACULTAD f 
+    ON al.facultad_id = f.facultad_id
+LEFT JOIN G1.DESERCION d 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY f.nombre
 ORDER BY tasa_desercion DESC;
 ```
