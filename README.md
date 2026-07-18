@@ -106,6 +106,23 @@ el siguiente período
 - 🔴 **CAUSA_DESERCION** — 7 filas
 - 🔴 **MATRICULA_ESTADO** — 5 filas
 
+### 💾 Script SQL - Creación de Base de Datos
+
+El siguiente script contiene la creación completa de las 14 tablas del 
+esquema G1, sus 14 llaves primarias (PK) y las 16 relaciones (FK) que 
+conforman el modelo relacional en SQL Server (Azure).
+
+📄 [Ver script completo: script-creacion-bd.sql](script-creacion-bd.sql)
+
+**Resumen del script:**
+- **Paso 1:** Creación de 10 tablas de dimensión y 4 tablas transaccionales
+- **Paso 2:** Definición de 14 Primary Keys
+- **Paso 3:** Definición de 16 Foreign Keys, conectando ALUMNO → 6 dimensiones, 
+MATRICULA → ALUMNO y 4 dimensiones, CURSOS_X_MATRICULA → MATRICULA y CURSO, y 
+DESERCION → MATRICULA y CAUSA_DESERCION (causa principal y secundaria)
+- **Paso 4:** Consultas de verificación para confirmar la correcta creación 
+de tablas y relaciones
+
 ### 🗂️ Modelo de Datos
 
 El modelo se construyó bajo un esquema de estrella, conectando las tablas de 
