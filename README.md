@@ -448,3 +448,41 @@ WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY d.tipo_desercion
 ORDER BY porcentaje DESC;
 ```
+
+### Pregunta 9 - Semestre Académico con Mayor Tasa de Deserción
+
+**¿Cuál es el semestre académico con mayor indicador semestral de tasa de 
+deserción de alumnos de pregrado en los últimos 4 períodos?**
+
+![Pregunta 9 - Gráfico](pregunta9-grafico.png)
+
+**Detalle**
+![Pregunta 9 - Detalle](pregunta9-detalle.png)
+
+**Análisis**
+
+De los últimos 4 semestres académicos, 2025-II registró la mayor tasa con 
+5.00% (600 desertores sobre 12,000 matriculados), superando a 2024-2 (3.93%), 
+2025-1 (4.07%) y 2024-1 (4.45%). La tendencia muestra un incremento sostenido 
+en el último año, revirtiendo la mejora observada post-COVID.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Semestre Académico con mayor Tasa de Deserción - Últimos 4 períodos
+-- (2024-1, 2024-2, 2025-1, 2025-2 = semestre_id 11 al 14)
+-- Alumnos de pregrado, escalas de pago G3 y G4 - PUCP
+SELECT 
+    sa.codigo_sem,
+    sa.descripcion,
+    COUNT(DISTINCT d.matricula_id) AS desertores,
+    COUNT(DISTINCT m.matricula_id) AS matriculados,
+    CAST(COUNT(DISTINCT d.matricula_id) AS FLOAT) / COUNT(DISTINCT m.matricula_id) AS tasa_desercion
+FROM G1.MATRICULA m
+INNER JOIN G1.SEMESTRE_ACADEMICO sa 
+    ON m.semestre_id = sa.semestre_id
+LEFT JOIN G1.DESERCION d 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id BETWEEN 11 AND 14  -- Últimos 4 semestres: 2024-1, 2024-2, 2025-1, 2025-2
+GROUP BY sa.codigo_sem, sa.descripcion
+ORDER BY tasa_desercion DESC;
+```
