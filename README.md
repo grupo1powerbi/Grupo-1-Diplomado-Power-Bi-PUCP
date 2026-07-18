@@ -162,7 +162,6 @@ Facultad, Calendario, Escala de Pago, entre otras).
 
 ![Reporte - What / So What / Now What](reporte-2.png)
 
-
 ### Pregunta 1 - Tasa de Deserción por Género
 
 **¿Qué género presenta el mayor indicador semestral de tasa de deserción de 
@@ -170,7 +169,9 @@ alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 1 - Gráfico](pregunta1-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 1 - Obtener detalles](pregunta1-menu.png)
+
 ![Pregunta 1 - Detalle](pregunta1-detalle.png)
 
 **Análisis**
@@ -207,7 +208,9 @@ alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 2 - Gráfico](pregunta2-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 2 - Obtener detalles](pregunta2-menu.png)
+
 ![Pregunta 2 - Detalle](pregunta2-detalle.png)
 
 **Análisis**
@@ -248,7 +251,9 @@ deserción de alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 3 - Gráfico](pregunta3-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 3 - Obtener detalles](pregunta3-menu.png)
+
 ![Pregunta 3 - Detalle](pregunta3-detalle.png)
 
 **Análisis**
@@ -285,7 +290,9 @@ alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 4 - Gráfico](pregunta4-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 4 - Obtener detalles](pregunta4-menu.png)
+
 ![Pregunta 4 - Detalle](pregunta4-detalle.png)
 
 **Análisis**
@@ -325,7 +332,9 @@ deserción de alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 5 - Gráfico](pregunta5-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 5 - Obtener detalles](pregunta5-menu.png)
+
 ![Pregunta 5 - Detalle](pregunta5-detalle.png)
 
 **Análisis**
@@ -362,7 +371,9 @@ tasa de deserción de alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 6 - Gráfico](pregunta6-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 6 - Obtener detalles](pregunta6-menu.png)
+
 ![Pregunta 6 - Detalle](pregunta6-detalle.png)
 
 **Análisis**
@@ -403,7 +414,9 @@ deserción de alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 7 - Gráfico](pregunta7-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 7 - Obtener detalles](pregunta7-menu.png)
+
 ![Pregunta 7 - Detalle](pregunta7-detalle.png)
 
 **Análisis**
@@ -440,7 +453,9 @@ deserción de alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 8 - Gráfico](pregunta8-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 8 - Obtener detalles](pregunta8-menu.png)
+
 ![Pregunta 8 - Detalle](pregunta8-detalle.png)
 
 **Análisis**
@@ -476,7 +491,9 @@ deserción de alumnos de pregrado en los últimos 4 períodos?**
 
 ![Pregunta 9 - Gráfico](pregunta9-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 9 - Obtener detalles](pregunta9-menu.png)
+
 ![Pregunta 9 - Detalle](pregunta9-detalle.png)
 
 **Análisis**
@@ -514,7 +531,9 @@ deserción de alumnos de pregrado en el semestre 2025-II?**
 
 ![Pregunta 10 - Gráfico](pregunta10-grafico.png)
 
-**Detalle**
+**Explorar detalle**
+![Pregunta 10 - Obtener detalles](pregunta10-menu.png)
+
 ![Pregunta 10 - Detalle](pregunta10-detalle.png)
 
 **Análisis**
