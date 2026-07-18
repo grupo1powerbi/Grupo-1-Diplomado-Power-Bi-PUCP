@@ -14,6 +14,9 @@ claridad en el análisis.
 
 - 🗂️ **Modelo de datos en estrella**: conexión a base de datos SQL Server en Azure, 
 estructurando tablas de hechos y dimensiones para optimizar el análisis.
+- 🗄️ **Base de datos documentada**: script SQL completo de creación con 14 
+tablas, 14 Primary Keys y 16 Foreign Keys, replicable en cualquier instancia 
+de SQL Server.
 - 📊 **Medidas DAX personalizadas**: cálculo de la Tasa de Deserción y el Impacto 
 Económico mediante funciones como LOOKUPVALUE, vinculando métricas con resultados 
 académicos.
