@@ -375,3 +375,40 @@ WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY cp.tipo_colegio
 ORDER BY tasa_desercion DESC;
 ```
+
+### Pregunta 7 - Tasa de Deserción por Tipo de Beca Académica
+
+**¿Cuál es la beca académica con mayor indicador semestral de tasa de 
+deserción de alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 7 - Gráfico](pregunta7-grafico.png)
+
+**Detalle**
+![Pregunta 7 - Detalle](pregunta7-detalle.png)
+
+**Análisis**
+
+La beca Socioeconómica presenta el mayor indicador de deserción en 2025-II, 
+con 5.27%. No obstante, la diferencia con los demás tipos de beca es mínima, 
+lo que sugiere que contar con una beca no es, por sí solo, un factor 
+determinante en la deserción.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Tasa de Deserción por Tipo de Beca Académica - Semestre 2025-II (semestre_id = 14)
+-- Alumnos de pregrado, escalas de pago G3 y G4 - PUCP
+
+SELECT 
+    ba.descripcion AS beca_academica,
+    COUNT(DISTINCT d.matricula_id) AS desertores,
+    COUNT(DISTINCT m.matricula_id) AS matriculados,
+    CAST(COUNT(DISTINCT d.matricula_id) AS FLOAT) / COUNT(DISTINCT m.matricula_id) AS tasa_desercion
+FROM G1.MATRICULA m
+INNER JOIN G1.BECA_ACADEMICA ba 
+    ON m.beca_academica_id = ba.beca_academica_id
+LEFT JOIN G1.DESERCION d 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY ba.descripcion
+ORDER BY tasa_desercion DESC;
+```
