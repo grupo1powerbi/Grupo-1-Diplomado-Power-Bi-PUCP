@@ -412,3 +412,39 @@ WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
 GROUP BY ba.descripcion
 ORDER BY tasa_desercion DESC;
 ```
+
+### Pregunta 8 - Tipo de Deserción con Mayor Indicador
+
+**¿Cuál es el tipo de deserción con mayor indicador semestral de tasa de 
+deserción de alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 8 - Gráfico](pregunta8-grafico.png)
+
+**Detalle**
+![Pregunta 8 - Detalle](pregunta8-detalle.png)
+
+**Análisis**
+
+En 2025-II, el tipo de deserción predominante es Baja Formal con 57.33% del 
+total, superando a las Deserciones silenciosas que representan el 42.67%. 
+Este hallazgo es crítico porque la deserción silenciosa impide a la 
+universidad activar mecanismos de retención (becas, recategorización) a 
+tiempo.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Tipo de Deserción con mayor indicador - Semestre 2025-II (semestre_id = 14)
+-- Porcentaje calculado sobre el total de desertores del semestre
+
+SELECT 
+    d.tipo_desercion,
+    COUNT(d.desercion_id) AS cantidad_desertores,
+    CAST(COUNT(d.desercion_id) AS FLOAT) / 
+        SUM(COUNT(d.desercion_id)) OVER () AS porcentaje
+FROM G1.DESERCION d
+INNER JOIN G1.MATRICULA m 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY d.tipo_desercion
+ORDER BY porcentaje DESC;
+```
