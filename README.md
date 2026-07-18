@@ -486,3 +486,45 @@ WHERE m.semestre_id BETWEEN 11 AND 14  -- Últimos 4 semestres: 2024-1, 2024-2, 
 GROUP BY sa.codigo_sem, sa.descripcion
 ORDER BY tasa_desercion DESC;
 ```
+
+### Pregunta 10 - Tasa de Deserción por Modalidad de Ingreso
+
+**¿Cuál es la modalidad de ingreso con mayor indicador semestral de tasa de 
+deserción de alumnos de pregrado en el semestre 2025-II?**
+
+![Pregunta 10 - Gráfico](pregunta10-grafico.png)
+
+**Detalle**
+![Pregunta 10 - Detalle](pregunta10-detalle.png)
+
+**Análisis**
+
+La modalidad de ingreso Beca 18 presenta el mayor indicador de deserción en 
+el semestre 2025-II, con una tasa de 5.76%, seguida de Evaluación del Talento 
+(5.25%) y CEPREPUCP (5.06%). Este resultado resulta relevante porque Beca 18 
+está dirigida a estudiantes de bajos recursos económicos, lo que sugiere que, 
+pese al soporte financiero que otorga, estos estudiantes podrían enfrentar 
+otras barreras (académicas, sociales o de adaptación) que inciden en su 
+permanencia.
+
+**Consulta SQL de verificación**
+```sql
+-- Verificación: Tasa de Deserción por Modalidad de Ingreso - Semestre 2025-II (semestre_id = 14)
+-- Alumnos de pregrado, escalas de pago G3 y G4 - PUCP
+
+SELECT 
+    mi.nombre_modalidad,
+    COUNT(DISTINCT d.matricula_id) AS desertores,
+    COUNT(DISTINCT m.matricula_id) AS matriculados,
+    CAST(COUNT(DISTINCT d.matricula_id) AS FLOAT) / COUNT(DISTINCT m.matricula_id) AS tasa_desercion
+FROM G1.MATRICULA m
+INNER JOIN G1.ALUMNO al 
+    ON m.alumno_id = al.alumno_id
+INNER JOIN G1.MODALIDAD_INGRESO mi 
+    ON al.modalidad_ingreso_id = mi.modalidad_ingreso_id
+LEFT JOIN G1.DESERCION d 
+    ON d.matricula_id = m.matricula_id
+WHERE m.semestre_id = 14  -- Segundo Semestre 2025 (2025-2)
+GROUP BY mi.nombre_modalidad
+ORDER BY tasa_desercion DESC;
+```
